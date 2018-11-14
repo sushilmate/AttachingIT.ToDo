@@ -15,6 +15,10 @@ Assignment for AttachingIT org, it just ToDo project built in angular & web api 
 
 
 # Build and Test
+    1) Excersize1And2, just simple console application with different approches to solve same problem.
+    2) Exercize3 - ToDo project with UI in angular & back end API is in .Net Core. ORM used as EF CORE & data stored in database MDF file.
+    
+    For building project -
     Make sure you download the code from repo or clone the repo, this project is developed C# .NET Core framework so you need to have .Net core SDK installed on your system
     All the packages used in the project has been downloaded from nuget so your Visual Studio should have package source as https://api.nuget.org/v3/index.json
     Once you open the project in visual studio, just build the project, this will restore the packages from nuget & all projects inside solution will build one by one.
