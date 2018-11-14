@@ -27,7 +27,7 @@ namespace AttachingITToDo.WebAPI.Tests
         private string GetContentRootPath()
         {
             var integrationTestsPath = PlatformServices.Default.Application.ApplicationBasePath;
-            return Path.GetFullPath(Path.Combine(integrationTestsPath, "../../../../AttachingIT.ToDo"));
+            return Path.GetFullPath(Path.Combine(integrationTestsPath, "../../../../AttachingITToDo.WebUI"));
         }
 
         public void Dispose()
