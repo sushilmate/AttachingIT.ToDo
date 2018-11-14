@@ -39,8 +39,8 @@ namespace AttachingITToDo.Persistence.Repository
 
         public void CreateOrUpdate(IEnumerable<ToDo> toDos)
         {
-            var modifiedToDos = toDos.Where(x => x.Id != null && x.Id.Value != 0);
-            var newToDos = toDos.Where(x => x.Id == null || x.Id.Value == 0);
+            var modifiedToDos = toDos.Where(x => x.Id != 0);
+            var newToDos = toDos.Where(x => x.Id == 0);
             UpdateToDos(modifiedToDos);
             Create(newToDos);
         }

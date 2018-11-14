@@ -40,7 +40,7 @@ namespace AttachingITToDo.Persistence
         }
 
         /// <summary>
-        /// Scaffold-DbContext "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sushil\source\repos\Exercise1\AttachingITToDo.Persistence\Database\AttachingITDb.mdf;Integrated Security=True;Connect Timeout=30" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+        /// Scaffold-DbContext "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sushil\source\repos\AttachingIT.ToDo\AttachingITToDo.Persistence\Database\AttachingITDb.mdf;Integrated Security=True;Connect Timeout=30" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
         /// </summary>
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)

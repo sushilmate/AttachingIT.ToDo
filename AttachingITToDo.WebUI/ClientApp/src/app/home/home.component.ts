@@ -19,6 +19,14 @@ export class HomeComponent {
       headerName: 'Status',
       field: 'status',
       editable: true
+    },
+    {
+      headerName: 'Complete',
+      field: 'complete',
+      editable: false,
+      cellRenderer: params => {
+        return `<input type='checkbox' ${params.value ? 'checked' : ''} />`;
+      }
     }
   ];
   public rowData: ToDoViewModel[];
@@ -36,12 +44,13 @@ export class HomeComponent {
 
   AddToDo() {
     var newItem = new ToDoViewModel();
-    newItem.id = null;
+    newItem.id = 0;
     newItem.name = "";
     newItem.newOrModified = "new";
     newItem.status = "Open";
+    newItem.complete = true;
     this.gridApi.updateRowData({ add: [newItem] });
-    this.gridApi.setFocusedCell(this.gridApi.getDisplayedRowCount() -1, "name");
+    this.gridApi.setFocusedCell(this.gridApi.getDisplayedRowCount() - 1, "name");
   }
 
   DeleteToDo() {
@@ -49,7 +58,7 @@ export class HomeComponent {
     this.gridApi.updateRowData({ remove: selectedData });
     var filteredData = selectedData.filter(x => x.id != 0);
     this.http.post(this.baseUrl + 'api/ToDodata/RemoveToDo', filteredData, httpOptions).subscribe(result => {
-      alert("Upload Result " + result);
+      alert("Selected Record(s) deleted successfully.");
     },
       error => console.log('There was an error: '));
   }
@@ -70,14 +79,14 @@ export class HomeComponent {
       }
     });
     this.http.post<ToDoViewModel[]>(this.baseUrl + 'api/ToDodata/UpdateOrAddToDo', newOrModifiedToDos, httpOptions).subscribe(result => {
-        this.rowData = result;
-      },
+      this.rowData = result;
+    },
       error => console.log('There was an error: '));
   }
   GetAllToDos() {
     this.http.get<ToDoViewModel[]>('api/ToDodata/GetAllToDoItems').subscribe(result => {
-        this.rowData = result;
-      },
+      this.rowData = result;
+    },
       error => console.error(error));
   }
   onCellValueChanged(item) {
