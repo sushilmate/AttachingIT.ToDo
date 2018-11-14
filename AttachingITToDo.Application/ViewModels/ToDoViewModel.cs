@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AttachingITToDo.Application.VideModels
+﻿namespace AttachingITToDo.Application.VideModels
 {
     public class ToDoViewModel
     {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AttachingITToDo.Domain
+﻿namespace AttachingITToDo.Domain
 {
     public class ToDo
     {

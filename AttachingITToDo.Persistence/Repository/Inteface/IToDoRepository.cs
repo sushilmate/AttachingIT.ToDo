@@ -10,6 +10,7 @@ namespace AttachingITToDo.Persistence.Repository
         bool UpdateToDos(IEnumerable<ToDo> ToDos);
 
         void DeleteToDos(IEnumerable<ToDo> toDos);
+
         void CreateOrUpdate(IEnumerable<ToDo> enumerable);
     }
 }

@@ -1,5 +1,4 @@
 ﻿using AttachingITToDo.Domain;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,6 +21,7 @@ namespace AttachingITToDo.Persistence.Repository
             Save();
             return true;
         }
+
         public void CreateToDos(IEnumerable<ToDo> entities)
         {
             if (entities.Count() == 0)
@@ -30,6 +30,7 @@ namespace AttachingITToDo.Persistence.Repository
             _context.ToDo.AddRange(entities);
             Save();
         }
+
         public void DeleteToDos(IEnumerable<ToDo> toDos)
         {
             _context.ToDo.RemoveRange(toDos);

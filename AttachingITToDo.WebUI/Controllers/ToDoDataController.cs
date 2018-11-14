@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using AttachingITToDo.Application.VideModels;
 using AttachingITToDo.Domain;
 using AttachingITToDo.Persistence.Repository;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AttachingITToDo.WebUI.Controllers
 {
@@ -28,7 +28,6 @@ namespace AttachingITToDo.WebUI.Controllers
             var toDos = _toDoRepository.GetAllToDos();
             return _mapper.Map<IEnumerable<ToDo>, IEnumerable<ToDoViewModel>>(toDos);
         }
-
 
         [HttpPost("[action]")]
         public bool AddToDo([FromBody] IEnumerable<ToDoViewModel> toDo)
