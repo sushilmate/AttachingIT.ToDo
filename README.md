@@ -1,7 +1,7 @@
 
 # Introduction
 # AttachingIT.ToDo
-Assignment for AttachingIT org, it just ToDo project built in angular & web api in .Net Core.
+Assignment for AttachingIT org, it just ToDo project built in angular & web api in .Net Core, Client side programming done in Typescript.
 
 # Getting Started
 1.  Installation process
