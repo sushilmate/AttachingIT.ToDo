@@ -36,3 +36,10 @@ Assignment for AttachingIT org, it just ToDo project built in angular & web api 
     I have started with C# .NET Core 2.1 version to implement this web api, keeping in mind code should be easy to scale if we bring more serivces to this project, it should be readable & kept DRY wherever possible.
     
     In the project I have used to AutoMapper library to implement mapping between model to viewmodel & vice versa. this reduced to plenty of code.
+
+Exercise project will have exercise 1 & 2 solution & Exercise3 will contain ToDo.
+
+1) As a user, I am able to see a list of todo items, sorted by status (open, done)
+![image](https://user-images.githubusercontent.com/42713827/48495759-ad78b280-e856-11e8-9b6b-305d7f359afe.png)
+![image](https://user-images.githubusercontent.com/42713827/48495759-ad78b280-e856-11e8-9b6b-305d7f359afe.png)
+![image](https://user-images.githubusercontent.com/42713827/48495837-ce410800-e856-11e8-9302-bc9e21d7a5eb.png)
