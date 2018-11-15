@@ -36,6 +36,7 @@
                        [enableFilter]="true"
                        [animateRows]="true"
                        rowSelection="multiple"
+                       [overlayLoadingTemplate]="overlayLoadingTemplate"
                        (cellValueChanged)="onCellValueChanged($event)"
                        (gridReady)="onGridReady($event)">
       </ag-grid-angular>

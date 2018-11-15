@@ -33,12 +33,14 @@ export class HomeComponent {
   arrayBuffer: any;
   file: File;
   private gridApi;
-  private gridColumnApi;
+  private overlayLoadingTemplate;
 
   constructor(public http: HttpClient, @Inject('BASE_URL') public baseUrl: string) {
   }
 
   ngOnInit() {
+    this.overlayLoadingTemplate =
+      '<span class="ag-overlay-loading-center"><i class="fa fa-refresh fa-spin" style="font-size:24px;color:cornflowerblue"></i></span>';
     this.GetAllToDos();
   }
 
@@ -54,18 +56,23 @@ export class HomeComponent {
   }
 
   DeleteToDo() {
+    this.gridApi.showLoadingOverlay();
     var selectedData = this.gridApi.getSelectedRows();
-    this.gridApi.updateRowData({ remove: selectedData });
     var filteredData = selectedData.filter(x => x.id != 0);
-    this.http.post(this.baseUrl + 'api/ToDodata/RemoveToDo', filteredData, httpOptions).subscribe(result => {
-      alert("Selected Record(s) deleted successfully.");
-    },
-      error => console.log('There was an error: '));
+    if (filteredData.length > 0) {
+      this.http.post(this.baseUrl + 'api/ToDodata/RemoveToDo', filteredData, httpOptions).subscribe(result => {
+        //this.gridApi.hideOverlay();
+        this.gridApi.updateRowData({ remove: selectedData });
+      },
+        error => console.log('There was an error: '));
+    } else {
+      this.gridApi.updateRowData({ remove: selectedData });
+      this.gridApi.hideOverlay();
+    }
   }
 
   onGridReady(params) {
     this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
   }
 
   SaveToDoServer() {
@@ -78,17 +85,27 @@ export class HomeComponent {
         newOrModifiedToDos.push(node.data);
       }
     });
-    this.http.post<ToDoViewModel[]>(this.baseUrl + 'api/ToDodata/UpdateOrAddToDo', newOrModifiedToDos, httpOptions).subscribe(result => {
-      this.rowData = result;
-    },
-      error => console.log('There was an error: '));
+    if (newOrModifiedToDos.length > 0) {
+      this.http.post<ToDoViewModel[]>(this.baseUrl + 'api/ToDodata/UpdateOrAddToDo', newOrModifiedToDos, httpOptions)
+        .subscribe(result => {
+          this.rowData = result;
+        },
+          error => console.log('There was an error: '));
+    }
   }
+
   GetAllToDos() {
+    //this.gridApi.showLoadingOverlay();
     this.http.get<ToDoViewModel[]>('api/ToDodata/GetAllToDoItems').subscribe(result => {
       this.rowData = result;
+      //this.gridApi.hideOverlay();
     },
-      error => console.error(error));
+      error => {
+        console.error(error);
+        //this.gridApi.hideOverlay();
+      });
   }
+
   onCellValueChanged(item) {
     item.data.newOrModified = "modified";
   }
